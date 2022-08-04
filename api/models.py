@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from statistics import mode
 from django.db import models
 
 # Create your models here.
@@ -6,6 +8,8 @@ TYPE_CHOICES = (
    ('F', 'Full-time'),
    ('P','Part-time')
 )
+
+
 class Job(models.Model):
     company_name=models.CharField(max_length=100)
     job_name=models.CharField(max_length=100)
@@ -14,6 +18,10 @@ class Job(models.Model):
     salary=models.FloatField()
     duration=models.IntegerField(null=True,blank=True)
     last_date=models.DateField()
+    image=models.ImageField(upload_to='job_images',blank=True,null=True)
+    reqs=models.CharField(max_length=200,blank=True,null=True)
+    desc=models.TextField(max_length=300,blank=True,null=True)
+    
 
     def __str__(self):
         return (self.company_name)
@@ -21,6 +29,10 @@ class Job(models.Model):
 class Trending(models.Model):
     company_name=models.CharField(max_length=100)
     job_name=models.CharField(max_length=100)
+    image = models.ImageField(upload_to='post_images',blank=True,null=True)
+
+    def __str__(self):
+        return (self.company_name)
 
 
 
