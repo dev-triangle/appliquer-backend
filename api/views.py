@@ -4,11 +4,13 @@ from .models import Job,Trending,User
 from rest_framework import generics,mixins,viewsets,status
 from .serializers import RegisterSerializer
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 # Create your views here.
 
-class RegisterView(viewsets.GenericViewSet,mixins.CreateModelMixin):
+class RegisterView(generics.CreateAPIView):
     serializer_class=RegisterSerializer
     queryset=User.objects.all()
+    # permission_classes=()
     
 class JobViewSet(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveModelMixin):
     serializer_class=JobSerializer
