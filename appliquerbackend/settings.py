@@ -56,12 +56,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+# AUTHENTICATION_BACKENDS =[
+#     'django.contrib.auth.backends.ModelBackend',
+#     'users.authenticate.PasswordlessAuthBackend',
+# ]
 REST_FRAMEWORK={
-    'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.AllowAny',),
     'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',   
+        'rest_framework.authentication.SessionAuthentication',     
+       
     )
 }
 

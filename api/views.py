@@ -15,6 +15,7 @@ class RegisterView(generics.CreateAPIView):
 class JobViewSet(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveModelMixin):
     serializer_class=JobSerializer
     queryset=Job.objects.all()
+    permission_classes=[IsAuthenticated]
     
 class TrendingViewSet(viewsets.GenericViewSet,mixins.ListModelMixin):
     serializer_class=TrendingSerializer
