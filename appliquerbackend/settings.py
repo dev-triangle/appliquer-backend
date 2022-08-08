@@ -57,10 +57,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-# AUTHENTICATION_BACKENDS =[
-#     'django.contrib.auth.backends.ModelBackend',
-#     'users.authenticate.PasswordlessAuthBackend',
-# ]
 REST_FRAMEWORK={
     'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.AllowAny',),
     'DEFAULT_AUTHENTICATION_CLASSES':(
@@ -135,11 +131,7 @@ DATABASES = {
     }
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     ],
-# }
+
 # Postgres
 # DATABASES={
 #    'default':{
