@@ -27,7 +27,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class JobSerializer(serializers.ModelSerializer):
     image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
-    
     class Meta:
         model=Job
         fields='__all__'
