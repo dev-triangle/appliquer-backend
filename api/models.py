@@ -79,7 +79,14 @@ class Trending(models.Model):
     def __str__(self):
         return (self.company_name)
 
+class Userdetails(models.Model):
+    skillset= models.CharField(max_length=500)
+    experience=models.CharField(max_length=1000)
+    name=models.CharField(max_length=50)
+    projects=models.CharField(max_length=2000)
 
+    def __str__(self):
+        return(self.name)
 
 
 
