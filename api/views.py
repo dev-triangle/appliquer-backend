@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .serializers import JobSerializer,TrendingSerializer
-from .models import Job,Trending,User
+from .serializers import JobSerializer,TrendingSerializer,UserDetailSerializer
+from .models import Job,Trending,User,UserDetail
 from rest_framework import generics,mixins,viewsets,status
 from .serializers import RegisterSerializer
 from rest_framework.response import Response
@@ -22,3 +22,7 @@ class JobViewSet(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveMo
 class TrendingViewSet(viewsets.GenericViewSet,mixins.ListModelMixin):
     serializer_class=TrendingSerializer
     queryset=Trending.objects.all()
+
+class UserDetailViewset(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin,mixins.DestroyModelMixin):
+    serializer_class=UserDetailSerializer
+    queryset=UserDetail.objects.all()

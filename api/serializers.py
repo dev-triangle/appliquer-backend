@@ -3,7 +3,7 @@ import email
 from rest_framework import serializers
 from .models import Job,Trending
 from rest_framework.permissions import IsAuthenticated
-from .models import User
+from .models import User,UserDetail
 
 class RegisterSerializer(serializers.ModelSerializer):
     password=serializers.CharField(max_length=68,min_length=6,write_only=True)
@@ -35,4 +35,9 @@ class TrendingSerializer(serializers.ModelSerializer):
     image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
     class Meta:
         model=Trending
+        fields='__all__'
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=UserDetail
         fields='__all__'
