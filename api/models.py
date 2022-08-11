@@ -86,7 +86,14 @@ class UserDetail(models.Model):
     def __str__(self):
         return(self.name)
         
+class Application(models.Model):
+    user_foreign=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    job_foreign=models.ForeignKey(Job,on_delete=models.DO_NOTHING)
+    date_of_application=models.DateTimeField()
+    status=models.BooleanField(default=False)
 
+    def __str__(self):
+        return self
 
 
 

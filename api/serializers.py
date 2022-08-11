@@ -3,8 +3,8 @@ import email
 from rest_framework import serializers
 from .models import Job,Trending
 from rest_framework.permissions import IsAuthenticated
-from .models import User,UserDetail
-
+from .models import User,UserDetail,Application
+from rest_framework_simplejwt.tokens import RefreshToken,TokenError
 class RegisterSerializer(serializers.ModelSerializer):
     password=serializers.CharField(max_length=68,min_length=6,write_only=True)
 
@@ -41,3 +41,21 @@ class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserDetail
         fields='__all__'
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Application
+        fields='__all__'
+
+class LogoutSerializer(serializers.ModelSerializer):
+    refresh=serializers.CharField()
+
+    def validate(self,attrs):
+        self.token=attrs['refresh']
+        return attrs
+
+    def save(self,**kwargs):
+        try:
+            RefreshToken(self.token).blacklist()
+        except TokenError:
+            self.fail('bad_token')
