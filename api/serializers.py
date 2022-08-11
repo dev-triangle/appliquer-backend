@@ -47,15 +47,3 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model=Application
         fields='__all__'
 
-class LogoutSerializer(serializers.ModelSerializer):
-    refresh=serializers.CharField()
-
-    def validate(self,attrs):
-        self.token=attrs['refresh']
-        return attrs
-
-    def save(self,**kwargs):
-        try:
-            RefreshToken(self.token).blacklist()
-        except TokenError:
-            self.fail('bad_token')

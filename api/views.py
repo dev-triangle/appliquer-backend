@@ -1,10 +1,11 @@
 import stat
 from django.shortcuts import render
-from .serializers import JobSerializer,LogoutSerializer,TrendingSerializer,UserDetailSerializer,ApplicationSerializer
+from .serializers import JobSerializer,RegisterSerializer,TrendingSerializer,UserDetailSerializer,ApplicationSerializer
 from .models import Job,Trending,User,UserDetail,Application
 from rest_framework import generics,mixins,viewsets,status
 from rest_framework.response import Response
-from .serializers import RegisterSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 # Create your views here.
 
@@ -30,13 +31,13 @@ class ApplicationViewset(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.
     serializer_class=ApplicationSerializer
     queryset=Application.objects.all()
 
-class LogoutAuth(generics.GenericAPIView):
-    serializer_class=LogoutSerializer
+class BlacklistTokenView(APIView):
     permission_classes=[IsAuthenticated]
-
     def post(self,request):
-        serializer=self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            refresh_token=request.data["refresh"]
+            token=RefreshToken(refresh_token)
+            token.blacklist()
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
