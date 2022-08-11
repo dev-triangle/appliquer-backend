@@ -1,5 +1,6 @@
 from dataclasses import fields
 import email
+from statistics import mode
 from rest_framework import serializers
 from .models import Job,Trending
 from rest_framework.permissions import IsAuthenticated
@@ -24,7 +25,10 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self,validated_data):
         return User.objects.create_user(**validated_data)
 
-
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields=['id','username']
 class JobSerializer(serializers.ModelSerializer):
     image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
     class Meta:

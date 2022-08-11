@@ -1,6 +1,6 @@
 import stat
 from django.shortcuts import render
-from .serializers import JobSerializer,RegisterSerializer,TrendingSerializer,UserDetailSerializer,ApplicationSerializer
+from .serializers import JobSerializer,RegisterSerializer,TrendingSerializer,UserDetailSerializer,ApplicationSerializer,UserSerializer
 from .models import Job,Trending,User,UserDetail,Application
 from rest_framework import generics,mixins,viewsets,status
 from rest_framework.response import Response
@@ -12,6 +12,12 @@ from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 class RegisterView(viewsets.GenericViewSet,mixins.CreateModelMixin):
     serializer_class=RegisterSerializer
     queryset=User.objects.all()
+
+
+class LoggedInUserView(APIView):
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
     
 class JobViewSet(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveModelMixin,):
     serializer_class=JobSerializer
