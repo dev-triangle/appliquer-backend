@@ -4,9 +4,9 @@ from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser,BaseUserManager,PermissionsMixin)
 # Create your models here.
 TYPE_CHOICES = (
-   ('I', 'Intern'),
-   ('F', 'Full-time'),
-   ('P','Part-time')
+   ('Intern', 'Intern'),
+   ('Full-Time', 'Full-time'),
+   ('Part-Time','Part-time')
 )
 class UserManager(BaseUserManager):
     def create_user(self,username,email,password=None):
@@ -51,10 +51,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     def tokens(self):
         return ''
 
-    
-
-
-
 class Job(models.Model):
     company_name=models.CharField(max_length=100)
     job_name=models.CharField(max_length=100)
@@ -89,6 +85,7 @@ class UserDetail(models.Model):
 
     def __str__(self):
         return(self.name)
+        
 
 
 
