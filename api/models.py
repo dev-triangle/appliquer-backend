@@ -92,8 +92,8 @@ class Application(models.Model):
     date_of_application=models.DateTimeField()
     status=models.BooleanField(default=False)
 
-    def __str__(self):
-        return self
+    def __int__(self):
+        return (self.id)
 
 
 
