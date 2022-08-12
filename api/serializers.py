@@ -49,5 +49,5 @@ class UserDetailSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model=Application
-        fields=['user_foreign','job_foreign','date_of_application']
+        fields=['user_foreign','job_foreign','date_of_application','username']
 

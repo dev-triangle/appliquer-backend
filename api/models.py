@@ -82,7 +82,7 @@ class UserDetail(models.Model):
     projects=models.CharField(max_length=250)
     description=models.CharField(max_length=500)
     user_foreign=models.ForeignKey(User,on_delete=models.DO_NOTHING)
-
+    username=models.CharField(max_length=255,unique=True)
     def __str__(self):
         return(self.name)
         
@@ -91,9 +91,10 @@ class Application(models.Model):
     job_foreign=models.ForeignKey(Job,on_delete=models.DO_NOTHING)
     date_of_application=models.DateTimeField()
     status=models.BooleanField(default=False)
+    username=models.CharField(max_length=255,unique=True)
 
     def __int__(self):
-        return (self.id)
+        return (self.username)
 
 
 
