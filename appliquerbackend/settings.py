@@ -125,25 +125,25 @@ WSGI_APPLICATION = 'appliquerbackend.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # sqlite
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Postgres
-# DATABASES={
-#    'default':{
-#       'ENGINE':'django.db.backends.postgresql_psycopg2',
-#       'NAME':'appliquer',
-#       'USER':'postgres',
-#       'PASSWORD':'Achyuth1@',
-#       'HOST':'localhost',
-#       'PORT':'5432',
-#    }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'appliquerdb', 
+        'USER': 'postgres', 
+        'PASSWORD': 'Achyuth1@',
+        'HOST': 'localhost', 
+        'PORT': '5432',
+    }
+}
 
 # MongoDB
 # DATABASES = {
