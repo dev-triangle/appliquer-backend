@@ -1,7 +1,9 @@
 from distutils.command.upload import upload
 import email
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser,BaseUserManager,PermissionsMixin)
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 TYPE_CHOICES = (
    ('Intern', 'Intern'),
@@ -77,12 +79,18 @@ class Trending(models.Model):
 
 class UserDetail(models.Model):
     skillset= models.CharField(max_length=250)
-    experience=models.CharField(max_length=250)
+    experience= ArrayField(models.CharField(max_length=512))
     name=models.CharField(max_length=100)
-    projects=models.CharField(max_length=250)
+    projects=ArrayField(models.CharField(max_length=512))
     description=models.CharField(max_length=500)
     user_foreign=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     username=models.CharField(max_length=255,unique=True)
+    linkedin=models.URLField()
+    github=models.URLField()
+    dob=models.DateField()
+    email=models.EmailField()
+    
+   
     def __str__(self):
         return(self.name)
         
