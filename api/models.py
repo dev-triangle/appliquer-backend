@@ -1,5 +1,5 @@
 from distutils.command.upload import upload
-import email
+from email.policy import default
 from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser,BaseUserManager,PermissionsMixin)
@@ -78,15 +78,16 @@ class Trending(models.Model):
         return (self.company_name)
 
 class UserDetail(models.Model):
-    skillset= models.CharField(max_length=250)
-    experience= ArrayField(models.CharField(max_length=512))
+    profile_photo=models.ImageField(upload_to='profile_images',blank=True,null=True)
+    skillset= models.CharField(max_length=250,blank=True)
+    experience= ArrayField(models.CharField(max_length=512),blank=True,null=True)
     name=models.CharField(max_length=100)
-    projects=ArrayField(models.CharField(max_length=512))
-    description=models.CharField(max_length=500)
+    projects=ArrayField(models.CharField(max_length=512),null=True,blank=True)
+    description=models.CharField(max_length=500,null=True,blank=True)
     user_foreign=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     username=models.CharField(max_length=255,unique=True)
     linkedin=models.URLField()
-    github=models.URLField()
+    github=models.URLField(null=True,blank=True)
     dob=models.DateField()
     email=models.EmailField()
     

@@ -42,6 +42,7 @@ class TrendingSerializer(serializers.ModelSerializer):
         fields='__all__'
 
 class UserDetailSerializer(serializers.ModelSerializer):
+    profile_photo=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
     class Meta:
         model=UserDetail
         fields='__all__'
