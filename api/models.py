@@ -79,7 +79,7 @@ class Trending(models.Model):
 
 class UserDetail(models.Model):
     profile_photo=models.ImageField(upload_to='profile_images',blank=True,null=True)
-    skillset= models.CharField(max_length=250,blank=True)
+    skillset= models.CharField(max_length=250,blank=True,null=True)
     experience= ArrayField(models.CharField(max_length=512),blank=True,null=True)
     name=models.CharField(max_length=100)
     projects=ArrayField(models.CharField(max_length=512),null=True,blank=True)
