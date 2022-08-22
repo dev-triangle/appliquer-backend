@@ -29,7 +29,7 @@ class TrendingViewSet(viewsets.GenericViewSet,mixins.ListModelMixin):
     queryset=Trending.objects.all()
 
 class UserDetailViewset(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.UpdateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin,mixins.DestroyModelMixin):
-    permission_classes=[IsAuthenticatedOrReadOnly]
+    # permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class=UserDetailSerializer
     queryset=UserDetail.objects.all()
 
