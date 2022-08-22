@@ -79,17 +79,17 @@ class Trending(models.Model):
 
 class UserDetail(models.Model):
     profile_photo=models.ImageField(upload_to='profile_images',blank=True,null=True)
-    skillset= models.CharField(max_length=250,blank=True)
+    skillset= models.CharField(max_length=250,null=True,blank=True)
     experience= ArrayField(models.CharField(max_length=512),blank=True,null=True)
-    name=models.CharField(max_length=100,blank=True)
+    name=models.CharField(max_length=100,null=True,blank=True)
     projects=ArrayField(models.CharField(max_length=512),null=True,blank=True)
     description=models.CharField(max_length=500,null=True,blank=True)
     user_foreign=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     username=models.CharField(max_length=255,unique=True)
-    linkedin=models.URLField(blank=True)
+    linkedin=models.URLField(null=True,blank=True)
     github=models.URLField(null=True,blank=True)
-    dob=models.DateField(blank=True)
-    email=models.EmailField(blank=True)
+    dob=models.DateField(null=True,blank=True)
+    email=models.EmailField(null=True,blank=True)
     
    
     def _str_(self):
