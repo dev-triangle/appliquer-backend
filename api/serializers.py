@@ -36,13 +36,13 @@ class JobSerializer(serializers.ModelSerializer):
         fields='__all__'
 
 class TrendingSerializer(serializers.ModelSerializer):
-    image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    # image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
     class Meta:
         model=Trending
         fields='__all__'
 
 class UserDetailSerializer(serializers.ModelSerializer):
-    profile_photo=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    # profile_photo=serializers.ImageField(max_length=None,allow_empty_file=True,use_url=True,required=False)
     class Meta:
         model=UserDetail
         fields='__all__'

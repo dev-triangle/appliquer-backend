@@ -134,26 +134,26 @@ WSGI_APPLICATION = 'appliquerbackend.wsgi.application'
 
 
 # Postgres
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'appliquerdb', 
-#         'USER': 'postgres', 
-#         'PASSWORD': 'Achyuth1@',
-#         'HOST': 'localhost', 
-#         'PORT': '5432',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'dbkt8mdqsi9itc',
-        'USER':'ohyxyqwwqkmyny',
-        'PASSWORD':'5534c5c47c264cee82f74092520d70df704d05cbddc8d1bd5987f233c1333fcf',
-        'HOST':'ec2-100-26-39-41.compute-1.amazonaws.com',
-        'PORT':'5432'
+        'NAME': 'appliquerdb', 
+        'USER': 'postgres', 
+        'PASSWORD': 'Achyuth1@',
+        'HOST': 'localhost', 
+        'PORT': '5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME':'dbkt8mdqsi9itc',
+#         'USER':'ohyxyqwwqkmyny',
+#         'PASSWORD':'5534c5c47c264cee82f74092520d70df704d05cbddc8d1bd5987f233c1333fcf',
+#         'HOST':'ec2-100-26-39-41.compute-1.amazonaws.com',
+#         'PORT':'5432'
+#     }
+# }
 
 # MongoDB
 # DATABASES = {
